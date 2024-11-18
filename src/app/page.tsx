@@ -23,7 +23,7 @@ interface Question {
 
 export default function DynamicFormWithSubmit() {
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<[]>([]);
   const [selectedUser, setSelectedUser] = useState<string>('');
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [statusMessage, setStatusMessage] = useState<string>('');
@@ -133,7 +133,7 @@ export default function DynamicFormWithSubmit() {
             label="Selecione o Candidato"
             labelId="user-select-label"
             value={selectedUser}
-            onChange={(e: any) => handleUserSelect(e)}
+            onChange={(e) => handleUserSelect(e)}
           >
             <MenuItem value="">
               <em>Selecione...</em>

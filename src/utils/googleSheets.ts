@@ -1,8 +1,8 @@
-import { google, sheets_v4 } from 'googleapis';
+import { google } from 'googleapis';
 import { JWT } from 'google-auth-library';
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: 'E:/Desktop/form-project/src/utils/google.json',
+  keyFile: './google.json',
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
@@ -40,7 +40,7 @@ export const getSheetDataAndQuestions = async (
 export const appendToSheet = async (
   spreadsheetId: string,
   range: string,
-  values: any[]
+  values: []
 ) => {
   try {
     const sheets = google.sheets({ version: 'v4', auth });
