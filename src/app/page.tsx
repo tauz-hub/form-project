@@ -83,6 +83,8 @@ export default function DynamicFormWithSubmit() {
         return;
       }
 
+      setCanSubmit(false);
+
       // Envia os dados para a rota submiter
       const response = await fetch('/api/submitForm', {
         method: 'POST',
@@ -100,7 +102,7 @@ export default function DynamicFormWithSubmit() {
         const errorData = await response.json();
         setIsSuccess(false);
         setStatusMessage(`Erro ao enviar formulário: ${errorData.error}`);
-
+        setCanSubmit(true);
         downloadJSON(answers, 'formulario-erro.json');
       }
     } catch (error) {
@@ -109,7 +111,7 @@ export default function DynamicFormWithSubmit() {
       setStatusMessage(
         'Erro ao enviar o formulário. Baixe o arquivo com as respostas.'
       );
-
+      setCanSubmit(true);
       downloadJSON(answers, `${answers.question_1}_formulario-erro.json`);
     }
   };
